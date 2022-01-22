@@ -41,20 +41,29 @@
 ; code
 ;--------------------------------------------------------
 	.area _CODE
-;main.c:4: void main(){
+;main.c:4: void main()
 ;	---------------------------------
 ; Function main
 ; ---------------------------------
 _main::
-;main.c:5: printf("HELLO WORLD");
+;main.c:6: SHOW_SPRITES;
+	ldh	a, (_LCDC_REG + 0)
+	or	a, #0x02
+	ldh	(_LCDC_REG + 0), a
+;main.c:7: DISPLAY_ON;
+	ldh	a, (_LCDC_REG + 0)
+	or	a, #0x80
+	ldh	(_LCDC_REG + 0), a
+;main.c:9: printf("hello world");
 	ld	de, #___str_0
 	push	de
 	call	_printf
-	pop	hl
-;main.c:6: }
-	ret
+;main.c:11: while(1){
+00102$:
+;main.c:14: }
+	jr	00102$
 ___str_0:
-	.ascii "HELLO WORLD"
+	.ascii "hello world"
 	.db 0x00
 	.area _CODE
 	.area _INITIALIZER

@@ -1,29 +1,173 @@
-ASxxxx Assembler V02.00 + NoICE + SDCC mods  (GameBoy Z80-like CPU), page 1.
-Hexadecimal [24-Bits]
-
-Symbol Table
-
-    .__.$$$.                                                    =  002710 L
-    .__.ABS.                                                    =  000000 G
-    .__.CPU.                                                    =  000000 L
-    .__.H$L.                                                    =  000000 L
-  0 ___str_0                                                       000009 R
-  0 _main                                                          000000 GR
-    _printf                                                        ****** GX
-
-
-ASxxxx Assembler V02.00 + NoICE + SDCC mods  (GameBoy Z80-like CPU), page 2.
-Hexadecimal [24-Bits]
-
-Area Table
-
-   0 _CODE                                      size     15   flags    0
-   1 _DATA                                      size      0   flags    0
-   2 _INITIALIZED                               size      0   flags    0
-   3 _DABS                                      size      0   flags    8
-   4 _HOME                                      size      0   flags    0
-   5 _GSINIT                                    size      0   flags    0
-   6 _GSFINAL                                   size      0   flags    0
-   7 _INITIALIZER                               size      0   flags    0
-   8 _CABS                                      size      0   flags    8
-
+; no$gmb format .sym file
+; Generated automagically by ASxxxx linker V01.75 (SDK 3.0.0)
+; Area: .  .ABS.
+00:0000 s__HEADER
+00:0000 .init
+00:0000 s__SFR
+00:0200 s__CODE
+00:045A s__HOME
+00:0606 s__BASE
+00:072B s__LIT
+00:072B s__GSINIT
+00:08B0 s__GSINITTAIL
+00:08B1 s__GSFINAL
+00:C000 .OAM
+00:C0A0 s__DATA
+00:C0E9 s__BSS
+00:C142 s__HEAP
+00:C142 s__BSEG
+00:C142 s__ISEG
+00:C142 s__XSEG
+00:C142 s__OVERLAY
+00:E000 .STACK
+00:FF80 .refresh_OAM
+; Area: _CODE
+00:0200 _movegamecharacter
+00:028A _performantdelay
+00:029E _setupwizard
+00:0331 _main
+; Area: _HEADER
+00:01D2 _exit
+; Area: _HOME
+00:045A .set_mode
+00:046A .remove_VBL
+00:0470 .remove_LCD
+00:0476 .remove_TIM
+00:047C .remove_SIO
+00:0482 .remove_JOY
+00:0488 .add_VBL
+00:048E .add_LCD
+00:0494 .add_TIM
+00:049A .add_SIO
+00:04A0 .add_JOY
+00:04A6 .remove_int
+00:04C6 .add_int
+00:04E2 .wait_vbl_done
+00:04E2 _wait_vbl_done
+00:04F9 _display_off
+00:04F9 .display_off
+00:051A .serial_IO
+00:0549 _mode
+00:0552 _get_mode
+00:0557 _enable_interrupts
+00:0559 _disable_interrupts
+00:055B _reset
+00:055B .reset
+00:0561 _set_interrupts
+00:056C _remove_VBL
+00:0577 _remove_LCD
+00:0582 _remove_TIM
+00:058D _remove_SIO
+00:0598 _remove_JOY
+00:05A3 _add_VBL
+00:05AE _add_LCD
+00:05B9 _add_TIM
+00:05C4 _add_SIO
+00:05CF _add_JOY
+00:05DA _clock
+00:05E3 __printTStates
+00:05E4 banked_call
+00:05FD banked_ret
+; Area: _BASE
+00:0606 .mv_sprite
+00:0615 _move_sprite
+00:0622 _set_win_data
+00:0622 _set_bkg_data
+00:066F _set_sprite_data
+00:069E .padup
+00:069E _waitpadup
+00:06AE .jpad
+00:06DB .wait_pad
+00:06E2 _joypad
+00:06E7 _waitpad
+00:06F1 .set_sprite_tile
+00:06FE _set_sprite_tile
+00:0709 .copy_vram
+00:0718 _get_data
+00:0718 _set_data
+; Area: _LIT
+; Area: _GSINIT
+00:072B gsinit
+; Area: _GSINITTAIL
+; Area: _GSFINAL
+; Area: _DATA
+00:C0A0 _CharacterSprites
+00:C0E0 _wizard
+00:C0E8 _spritesize
+; Area: _BSS
+00:C0E9 __cpu
+00:C0EA .mode
+00:C0EB __io_out
+00:C0EC __io_in
+00:C0ED __io_status
+00:C0EE .vbl_done
+00:C0EF __current_bank
+00:C0F0 _sys_time
+00:C0F0 .sys_time
+00:C0F2 .int_0x40
+00:C102 .int_0x48
+00:C112 .int_0x50
+00:C122 .int_0x58
+00:C132 .int_0x60
+; Area: _HEAP
+00:C142 _malloc_heap_start
+; Area: _OVERLAY
+; Area: _ISEG
+; Area: _BSEG
+; Area: _XSEG
+; Area: _SFR
+00:FF00 _P1_REG
+00:FF01 _SB_REG
+00:FF02 _SC_REG
+00:FF04 _DIV_REG
+00:FF05 _TIMA_REG
+00:FF06 _TMA_REG
+00:FF07 _TAC_REG
+00:FF0F _IF_REG
+00:FF10 _NR10_REG
+00:FF11 _NR11_REG
+00:FF12 _NR12_REG
+00:FF13 _NR13_REG
+00:FF14 _NR14_REG
+00:FF16 _NR21_REG
+00:FF17 _NR22_REG
+00:FF18 _NR23_REG
+00:FF19 _NR24_REG
+00:FF1A _NR30_REG
+00:FF1B _NR31_REG
+00:FF1C _NR32_REG
+00:FF1D _NR33_REG
+00:FF1E _NR34_REG
+00:FF20 _NR41_REG
+00:FF21 _NR42_REG
+00:FF22 _NR43_REG
+00:FF23 _NR44_REG
+00:FF24 _NR50_REG
+00:FF25 _NR51_REG
+00:FF26 _NR52_REG
+00:FF40 _LCDC_REG
+00:FF41 _STAT_REG
+00:FF42 _SCY_REG
+00:FF43 _SCX_REG
+00:FF44 _LY_REG
+00:FF45 _LYC_REG
+00:FF46 _DMA_REG
+00:FF47 _BGP_REG
+00:FF48 _OBP0_REG
+00:FF49 _OBP1_REG
+00:FF4A _WY_REG
+00:FF4B _WX_REG
+00:FF4D _KEY1_REG
+00:FF4F _VBK_REG
+00:FF51 _HDMA1_REG
+00:FF52 _HDMA2_REG
+00:FF53 _HDMA3_REG
+00:FF54 _HDMA4_REG
+00:FF55 _HDMA5_REG
+00:FF56 _RP_REG
+00:FF68 _BCPS_REG
+00:FF69 _BCPD_REG
+00:FF6A _OCPS_REG
+00:FF6B _OCPD_REG
+00:FF70 _SVBK_REG
+00:FFFF _IE_REG
