@@ -10,7 +10,7 @@
   Compression          : None.
   Counter              : None.
   Tile size            : 8 x 8
-  Tiles                : 0 to 3
+  Tiles                : 0 to 15
 
   Palette colors       : None.
   SGB Palette          : None.
@@ -26,6 +26,6 @@
 /* Bank of tiles. */
 #define CharacterSpritesBank 0
 /* Start of tile array. */
-extern const unsigned char CharacterSprites[];
+extern unsigned char CharacterSprites[];
 
 /* End of CHARACTERSPRITES.H */
