@@ -5,6 +5,9 @@
 
 struct GameCharacter wizard;
 UBYTE spritesize = 8;
+UBYTE animateCycle = 0;
+UINT8 animationDelay = 8;
+UINT8 steepsize = 4;
 
 //moves characters
 void movegamecharacter(struct GameCharacter* character, UINT8 x, UINT8 y){
@@ -43,7 +46,7 @@ void createwizard(){
 
 void main()
 {
-    set_sprite_data(0,16,CharacterSprites);
+    set_sprite_data(0,48,CharacterSprites);
     createwizard();
 
     SHOW_SPRITES;
@@ -52,53 +55,123 @@ void main()
     while(1){
 
         if(joypad() & J_LEFT){
-           wizard.x -= 8;
+           wizard.x -= steepsize;
+           performantdelay(animationDelay);
+
+           if (animateCycle == 0){
+                set_sprite_tile(0, 24);
+                set_sprite_tile(1, 25);
+                set_sprite_tile(2, 26);
+                set_sprite_tile(3, 27);
+                animateCycle = 1;
+            }
+            else{
+                set_sprite_tile(0, 28);
+                set_sprite_tile(1, 29);
+                set_sprite_tile(2, 30);
+                set_sprite_tile(3, 31);
+                animateCycle = 0;
+            }
+
+           movegamecharacter(&wizard, wizard.x, wizard.y);
+
+            performantdelay(animationDelay);
 
            set_sprite_tile(0, 4);
            set_sprite_tile(1, 5);
            set_sprite_tile(2, 6);
            set_sprite_tile(3, 7);
-
-           movegamecharacter(&wizard, wizard.x, wizard.y);
        }
 
        if(joypad() & J_RIGHT){
-           wizard.x += 8;
+           wizard.x += steepsize;
+           performantdelay(animationDelay);
 
-            set_sprite_tile(0, 8);
-           set_sprite_tile(1, 9);
-           set_sprite_tile(2, 10);
-           set_sprite_tile(3, 11);
+           if (animateCycle == 0){
+                set_sprite_tile(0, 40);
+                set_sprite_tile(1, 41);
+                set_sprite_tile(2, 42);
+                set_sprite_tile(3, 43);
+                animateCycle = 1;
+            }
+            else{
+                set_sprite_tile(0, 44);
+                set_sprite_tile(1, 45);
+                set_sprite_tile(2, 46);
+                set_sprite_tile(3, 47);
+                animateCycle = 0;
+            }
 
            movegamecharacter(&wizard, wizard.x, wizard.y);
-       }
 
-       if(joypad() & J_UP){
-           wizard.y -= 8;
+            performantdelay(animationDelay);
 
            set_sprite_tile(0, 12);
            set_sprite_tile(1, 13);
            set_sprite_tile(2, 14);
            set_sprite_tile(3, 15);
-           
+       }
+
+       if(joypad() & J_UP){
+           wizard.y -= steepsize;
+           performantdelay(animationDelay);
+
+            if (animateCycle == 0){
+                set_sprite_tile(0, 32);
+                set_sprite_tile(1, 33);
+                set_sprite_tile(2, 34);
+                set_sprite_tile(3, 35);
+                animateCycle = 1;
+            }
+            else{
+                set_sprite_tile(0, 36);
+                set_sprite_tile(1, 37);
+                set_sprite_tile(2, 38);
+                set_sprite_tile(3, 39);
+                animateCycle = 0;
+            }
 
            movegamecharacter(&wizard, wizard.x, wizard.y);
+
+            performantdelay(animationDelay);
+
+           set_sprite_tile(0, 8);
+           set_sprite_tile(1, 9);
+           set_sprite_tile(2, 10);
+           set_sprite_tile(3, 11);
        }
 
        if(joypad() & J_DOWN){
-           wizard.y += 8;
+           wizard.y += steepsize;
+           performantdelay(animationDelay);
+
+            if (animateCycle == 0){
+                set_sprite_tile(0, 16);
+                set_sprite_tile(1, 17);
+                set_sprite_tile(2, 18);
+                set_sprite_tile(3, 19);
+                animateCycle = 1;
+            }
+            else{
+                set_sprite_tile(0, 20);
+                set_sprite_tile(1, 21);
+                set_sprite_tile(2, 22);
+                set_sprite_tile(3, 23);
+                animateCycle = 0;
+            }
+
+           movegamecharacter(&wizard, wizard.x, wizard.y);
+
+            performantdelay(animationDelay);
 
            set_sprite_tile(0, 0);
            set_sprite_tile(1, 1);
            set_sprite_tile(2, 2);
            set_sprite_tile(3, 3);
-
-
-           movegamecharacter(&wizard, wizard.x, wizard.y);
        }
 
 
-       performantdelay(10);
+       performantdelay(5);
     }
 
     SHOW_SPRITES;
