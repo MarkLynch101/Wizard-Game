@@ -1,12 +1,14 @@
 #include <gb/gb.h>
 #include <stdio.h>
+#include "CaveEntrenceMap.c"
+#include "CaveEntrenceSprites.c"
 #include "CharacterSprites.c"
 #include "GameCharacter.c"
 
 struct GameCharacter wizard;
 UBYTE spritesize = 8;
 UBYTE animateCycle = 0;
-UINT8 animationDelay = 8;
+UINT8 animationDelay = 6;
 UINT8 steepsize = 4;
 
 //moves characters
@@ -46,13 +48,17 @@ void createwizard(){
 
 void main()
 {
+    set_bkg_data(0,61,CaveEntrenceSprites);
+    set_bkg_tiles(0, 0, 100, 36, CaveEntrenceMap);
+    scroll_bkg(80,72);
+
     set_sprite_data(0,48,CharacterSprites);
     createwizard();
 
-    SHOW_SPRITES;
-    DISPLAY_ON;
-
     while(1){
+        SHOW_BKG;
+        SHOW_SPRITES;
+        DISPLAY_ON;
 
         if(joypad() & J_LEFT){
            wizard.x -= steepsize;
@@ -73,7 +79,8 @@ void main()
                 animateCycle = 0;
             }
 
-           movegamecharacter(&wizard, wizard.x, wizard.y);
+          // movegamecharacter(&wizard, wizard.x, wizard.y);
+           scroll_bkg(-4,0);
 
             performantdelay(animationDelay);
 
@@ -102,7 +109,8 @@ void main()
                 animateCycle = 0;
             }
 
-           movegamecharacter(&wizard, wizard.x, wizard.y);
+          // movegamecharacter(&wizard, wizard.x, wizard.y);
+           scroll_bkg(4,0);
 
             performantdelay(animationDelay);
 
@@ -131,7 +139,8 @@ void main()
                 animateCycle = 0;
             }
 
-           movegamecharacter(&wizard, wizard.x, wizard.y);
+           //movegamecharacter(&wizard, wizard.x, wizard.y);
+           scroll_bkg(0,-4);
 
             performantdelay(animationDelay);
 
@@ -160,7 +169,8 @@ void main()
                 animateCycle = 0;
             }
 
-           movegamecharacter(&wizard, wizard.x, wizard.y);
+           //movegamecharacter(&wizard, wizard.x, wizard.y);
+           scroll_bkg(0,4);
 
             performantdelay(animationDelay);
 
@@ -172,8 +182,6 @@ void main()
 
 
        performantdelay(5);
+       HIDE_BKG;
     }
-
-    SHOW_SPRITES;
-    DISPLAY_ON;
 }

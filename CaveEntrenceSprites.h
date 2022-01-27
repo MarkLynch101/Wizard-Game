@@ -1,6 +1,6 @@
 /*
 
- CHARACTERSPRITES.H
+ CAVEENTRENCESPRITES.H
 
  Include File.
 
@@ -10,7 +10,7 @@
   Compression          : None.
   Counter              : None.
   Tile size            : 8 x 8
-  Tiles                : 0 to 48
+  Tiles                : 0 to 61
 
   Palette colors       : None.
   SGB Palette          : None.
@@ -24,8 +24,8 @@
 
 
 /* Bank of tiles. */
-#define CharacterSpritesBank 0
+#define CaveEntrenceSpritesBank 0
 /* Start of tile array. */
-extern const unsigned char CharacterSprites[];
+extern const unsigned char CaveEntrenceSprites[];
 
-/* End of CHARACTERSPRITES.H */
+/* End of CAVEENTRENCESPRITES.H */
